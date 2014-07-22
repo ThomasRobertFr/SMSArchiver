@@ -1,7 +1,7 @@
 <?php
 /*  Author: Thomas Robert - thomas-robert.fr - Github @ThomasRobertFr
     
-    This file is part SMSArchiver.
+    This file is part of SMSArchiver.
 
     SMSArchiver is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@ class MySQL {
 					PRIMARY KEY (`id`)
 				)');
 		}
+		
 		return true;
 	}
 
@@ -66,6 +67,7 @@ class MySQL {
 				PRIMARY KEY (`id`)
 			)');
 		}
+		
 		return true;
 	}
 
@@ -126,11 +128,11 @@ class MySQL {
 	private static function __insertMessage($sms) {
 
 		return self::$insertMsg->execute(array(
-				':phone' => $sms['phone'],
-				':timestamp' => $sms['timestamp'],
-				':direction' => $sms['direction'],
-				':message' => $sms['message'])
-			);
+			':phone'     => $sms['phone'],
+			':timestamp' => $sms['timestamp'],
+			':direction' => $sms['direction'],
+			':message'   => $sms['message'])
+		);
 	}
 
 	private static function __insertContact($contact) {
@@ -175,6 +177,7 @@ class MySQL {
 			LEFT JOIN '.self::TBL_MESSAGES.' AS m ON m.phone = c.phone
 			WHERE name = "'.mysql_real_escape_string($contact).'"');
 		foreach ($data as $d) break;
+		
 		return $d;
 	}
 
@@ -186,6 +189,7 @@ class MySQL {
 		foreach ($data as $d) {
 			$out[] = $d['phone'];
 		}
+
 		return $out;
 	}
 
@@ -202,6 +206,7 @@ class MySQL {
 		foreach ($data as $d) {
 			$out[] = $d['phone'];
 		}
+		
 		return $out;
 	}
 
