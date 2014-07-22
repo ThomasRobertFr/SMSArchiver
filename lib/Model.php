@@ -53,6 +53,7 @@ class MySQL {
 					PRIMARY KEY (`id`)
 				)');
 		}
+		
 		return true;
 	}
 
@@ -66,6 +67,7 @@ class MySQL {
 				PRIMARY KEY (`id`)
 			)');
 		}
+		
 		return true;
 	}
 
@@ -175,6 +177,7 @@ class MySQL {
 			LEFT JOIN '.self::TBL_MESSAGES.' AS m ON m.phone = c.phone
 			WHERE name = "'.mysql_real_escape_string($contact).'"');
 		foreach ($data as $d) break;
+		
 		return $d;
 	}
 
@@ -186,6 +189,7 @@ class MySQL {
 		foreach ($data as $d) {
 			$out[] = $d['phone'];
 		}
+
 		return $out;
 	}
 
@@ -202,6 +206,7 @@ class MySQL {
 		foreach ($data as $d) {
 			$out[] = $d['phone'];
 		}
+		
 		return $out;
 	}
 

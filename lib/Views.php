@@ -121,11 +121,11 @@ class MessagesView {
 	}
 
 	public static function getContacts() {
-
 		$out = array();
 		foreach (MySQL::getContacts() as $c) {
 			$out[] = self::preprocessContact($c);
 		}
+		
 		return $out;
 	}
 
@@ -191,10 +191,12 @@ class MessagesView {
 
 	public static function stringToIntegerHash($str, $mod) {
 		$out = 140;
+		
 		foreach(unpack('C*', sha1($str, true)) as $i) {
 			$out += $i;
 			$out %= $mod;
 		}
+		
 		return $out;
 	}
 
@@ -221,14 +223,15 @@ class MessagesView {
 	}
 
 	public static function ucname($string) {
-	  $string =ucwords(strtolower($string));
+		$string = ucwords(strtolower($string));
 
-	  foreach (array('-', '\'') as $delimiter) {
-	    if (strpos($string, $delimiter)!==false) {
-	      $string =implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
-	    }
-	  }
-	  return $string;
+		foreach (array('-', '\'') as $delimiter) {
+			if (strpos($string, $delimiter) !== false) {
+		    	$string = implode($delimiter, array_map('ucfirst', explode($delimiter, $string)));
+		    }
+		}
+
+		return $string;
 	}
 
 
