@@ -137,11 +137,11 @@ class BackupRestore extends Importer {
 		$message = $sms['body'];
 		
 		return array(
-				'phone' => $num,
-				'timestamp' => $timestamp,
-				'direction' => $dir,
-				'message' => $message
-			);
+			'phone'     => $num,
+			'timestamp' => $timestamp,
+			'direction' => $dir,
+			'message'   => $message
+		);
 	}
 
 	private function createXMLObject($data) {
@@ -207,10 +207,10 @@ class Menue extends Importer {
 		$message = $sms['sms_body'];
 		
 		return array(
-			'phone' => $num,
+			'phone'     => $num,
 			'timestamp' => $timestamp,
 			'direction' => $dir,
-			'message' => $message
+			'message'   => $message
 		);
 	}
 

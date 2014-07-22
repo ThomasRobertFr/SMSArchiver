@@ -126,11 +126,11 @@ class MySQL {
 	private static function __insertMessage($sms) {
 
 		return self::$insertMsg->execute(array(
-				':phone' => $sms['phone'],
-				':timestamp' => $sms['timestamp'],
-				':direction' => $sms['direction'],
-				':message' => $sms['message'])
-			);
+			':phone'     => $sms['phone'],
+			':timestamp' => $sms['timestamp'],
+			':direction' => $sms['direction'],
+			':message'   => $sms['message'])
+		);
 	}
 
 	private static function __insertContact($contact) {

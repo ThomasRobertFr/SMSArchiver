@@ -45,18 +45,18 @@ class MessagesView {
 	public function __construct($contact, $page = null) {
 
 		$this->me = array(
-			'id' => self::MY_NAME,
-			'name' => self::MY_NAME,
+			'id'      => self::MY_NAME,
+			'name'    => self::MY_NAME,
 			'initial' => self::getInitial(self::MY_NAME),
-			'number' => self::MY_NUMBER
-			);
+			'number'  => self::MY_NUMBER
+		);
 
 		$this->currentContact = array(
-			'id' => $contact,
-			'name' => self::ucname($contact),
+			'id'      => $contact,
+			'name'    => self::ucname($contact),
 			'initial' => self::getInitial($contact),
-			'number' => self::stringToIntegerHash($contact, 360)
-			);
+			'number'  => self::stringToIntegerHash($contact, 360)
+		);
 
 		$this->getInfos();
 
@@ -95,13 +95,13 @@ class MessagesView {
 		$pages = self::listPages($view->getPage(), $view->getMaxPage(), '?contact='.urlencode($currentContact['id']).'&amp;page=');
 
 		return array(
-			'popup' => $popup,
-			'contacts' => $contacts,
-			'view' => $view,
-			'me' => $me,
+			'popup'          => $popup,
+			'contacts'       => $contacts,
+			'view'           => $view,
+			'me'             => $me,
 			'currentContact' => $currentContact,
-			'messages' => $messages,
-			'pages' => $pages
+			'messages'       => $messages,
+			'pages'          => $pages
 		);
 	}
 
@@ -162,12 +162,13 @@ class MessagesView {
 	public static function preprocessContact($c) {
 
 		return array(
-			'id' => $c['name'],
-			'name' => self::ucname($c['name']),
+			'id'      => $c['name'],
+			'name'    => self::ucname($c['name']),
 			'initial' => self::getInitial($c['name']),
-			'nb' => $c['nb'],
+			'nb'      => $c['nb'],
 			'lastsms' => self::formatDate($c['lastsms']),
-			'number' => self::stringToIntegerHash($c['name'], 360));
+			'number'  => self::stringToIntegerHash($c['name'], 360)
+		);
 	}
 
 
@@ -177,12 +178,13 @@ class MessagesView {
 
 		return array(
 			'direction' => $m['direction'],
-			'name' => $user['name'],
-			'initial' => $user['initial'],
+			'name'      => $user['name'],
+			'initial'   => $user['initial'],
 			'dateShort' => self::formatDate($m['timestamp'], 'hide').'<br/>'.date('G\hi', $m['timestamp']),
-			'dateLong' => self::formatDate($m['timestamp'], 'big').' '.date('H:i:s', $m['timestamp']),
-			'day' => self::formatDate($m['timestamp'], 'big', 'big'),
-			'message' => $m['message']);
+			'dateLong'  => self::formatDate($m['timestamp'], 'big').' '.date('H:i:s', $m['timestamp']),
+			'day'       => self::formatDate($m['timestamp'], 'big', 'big'),
+			'message'   => $m['message']
+		);
 	}
 
 	/*********** TOOLS ************/
